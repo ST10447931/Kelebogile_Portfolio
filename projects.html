@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Kelebogile Radebe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">KR</a>
+    <ul class="nav-links">
+      <li><a href="index.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Hire me</a>
+  </div>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <span class="section-tag">Project Experience</span>
+    <h1>Things I've built<br>along the way.</h1>
+    <p>A mix of academic projects and personal work. Each one taught me something different.</p>
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+    </div>
+  </div>
+
+  <section class="projects-section">
+    <div class="projects-grid" id="projectsGrid"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Kelebogile Radebe</span>
+    <span class="footer-sep">·</span>
+    <span>Software Developer</span>
+    <span class="footer-sep">·</span>
+    <a href="mailto:kgatediradebe@gmail.com">kgatediradebe@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  const projects = [
+    {
+      title: "Kelebogile Radebe's Portfolio",
+      desc: "My personal portfolio website — the one you're looking at right now. Built to showcase my projects, skills, and background to recruiters and collaborators.",
+      bullets: [
+        "Multi-page site with responsive layout across all devices",
+        "Clean HTML/CSS architecture with no frameworks",
+        "Designed with recruiter readability and UX in mind"
+      ],
+      tech: ["HTML", "CSS", "JavaScript"],
+      category: "web",
+      link: "https://st10447931.github.io/Kelebogile_Portfolio/"
+    },
+  
+    {
+      title: "Happy Minds Digital Solution",
+      desc: "A digital platform designed to supportstudents/learners with tools, resources, for a better learning experience.",
+      bullets: [
+        "Built with user wellbeing and accessibility in mind",
+        "Applied HCI principles for an intuitive, supportive interface",
+        "Focused on solving a real community need through technology"
+      ],
+      tech: ["JavaScript", "HTML", "CSS"],
+      category: "web",
+      link: "https://st10447931.github.io/Happy-Minds-Website/"
+    },
+    {
+      title: "SmartFlow Task Manager",
+      desc: "A task management application built to help individuals and teams organise, track, and complete work efficiently.",
+      bullets: [
+        "Task creation, assignment, and status tracking features",
+        "Clean UI with intuitive workflow design",
+        "Built with scalability and real-world usability in mind"
+      ],
+      tech: ["JavaScript"," MySQL" , "Bootstrap" , "Node.js", "HTML", "CSS"],
+      category: "web",
+      link: "https://github.com/ST10447931/smartTaskFLaw"
+    },
+     {
+      title: "Soccer Matches Live Streaming App",
+      desc: "A live streaming platform for soccer matches, designed to provide fans with real-time access to their favourite games and teams.",
+      bullets: [
+        "Live streaming of soccer matches with real-time updates",
+        "Clean UI",
+        "Built with real-world usability in mind"
+      ],
+      tech: ["React Native","Node.js",],
+      category: "web/Expo",
+      link: "https://github.com/ST10447931/GameZone-Live"
+    },
+  ];
+
+  let current = "all";
+
+  function render() {
+    const grid = document.getElementById('projectsGrid');
+    const filtered = current === "all" ? projects : projects.filter(p => p.category === current);
+    grid.innerHTML = filtered.map(p => `
+      <div class="project-card">   
+        <div class="project-body">
+          <div class="project-title">${p.title}</div>
+          <div class="project-desc">${p.desc}</div>
+          <ul class="project-bullets">
+            ${p.bullets.map(b => `<li>${b}</li>`).join('')}
+          </ul>
+          <div class="tech-stack">
+            ${p.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+          </div>
+          <a href="${p.link}" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  document.getElementById('filterBar').addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    current = btn.dataset.filter;
+    render();
+  });
+
+  render();
+</script>
+</body>
+</html>

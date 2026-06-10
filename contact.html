@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Kelebogile Radebe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">KR</a>
+     <ul class="nav-links">
+      <li><a href="index.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Hire me</a>
+  </div>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <span class="section-tag">Get in touch</span>
+    <h1>Let's talk about<br>opportunities.</h1>
+    <p>I'm actively looking for internship and junior developer roles. If you have a project, a team, or just want to chat — reach out.</p>
+  </div>
+
+  <section class="contact-section">
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <h2>Contact details</h2>
+        <p>The best way to reach me is by email. I typically reply within a day.</p>
+
+        <div class="contact-detail">
+          <div class="contact-detail-text">
+            <strong>Email</strong>
+            <span>kgatediradebe@gmail.com</span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-text">
+            <strong>Location</strong>
+            <span>Pretoria, South Africa</span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-text">
+            <strong>GitHub</strong>
+            <span>github.com/ST10447931</span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-text">
+            <strong>Status</strong>
+            <span>Final year student — open to internships &amp; junior roles</span>
+          </div>
+        </div>
+
+        <div class="social-row">
+          <a href="#" class="social-btn">GitHub</a>
+          <a href="#" class="social-btn">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h2>Send a message</h2>
+        <div class="form-field">
+          <label>Your name</label>
+          <input type="text" id="name" placeholder="e.g. Thabo Nkosi">
+        </div>
+        <div class="form-field">
+          <label>Email address</label>
+          <input type="email" id="email" placeholder="you@company.com">
+        </div>
+        <div class="form-field">
+          <label>Subject</label>
+          <input type="text" id="subject" placeholder="Internship opportunity / Collaboration / ...">
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea id="message" rows="5" placeholder="Tell me about the opportunity or what you have in mind..."></textarea>
+        </div>
+        <button class="btn-primary" id="sendBtn" style="width:100%">Send message</button>
+        <div class="form-status" id="formStatus"></div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Kelebogile Radebe</span>
+    <span class="footer-sep">·</span>
+    <span>Software Developer</span>
+    <span class="footer-sep">·</span>
+    <a href="mailto:kgatediradebe@gmail.com">kgatediradebe@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('sendBtn').addEventListener('click', () => {
+    const name    = document.getElementById('name').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const status  = document.getElementById('formStatus');
+
+    if (!name || !email || !message) {
+      status.textContent = 'Please fill in your name, email, and message.';
+      status.className = 'form-status error';
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      status.textContent = 'Please enter a valid email address.';
+      status.className = 'form-status error';
+      return;
+    }
+
+    // In a real deployment this would POST to a backend or Formspree/EmailJS
+    status.textContent = "Message sent — I'll get back to you soon.";
+    status.className = 'form-status success';
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('subject').value = '';
+    document.getElementById('message').value = '';
+
+    setTimeout(() => { status.textContent = ''; }, 5000);
+  });
+</script>
+</body>
+</html>

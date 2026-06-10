@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills — Kelebogile Radebe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">KR</a>
+    <ul class="nav-links">
+      <li><a href="index.html">About</a></li>
+      <li><a href="skills.html" class="active">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Hire me</a>
+  </div>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <span class="section-tag">Skills &amp; Competencies</span>
+    <h1>What I bring<br>to the table.</h1>
+    <p>Languages, frameworks, and tools I've worked with through coursework, personal projects, and independent learning.</p>
+  </div>
+
+  <section class="skills-section">
+    <h2>Languages &amp; Frameworks</h2>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </section>
+
+  <section class="skills-section">
+    <h2>Development Areas</h2>
+    <div class="soft-grid">
+      <span class="soft-chip">Web Applications</span>
+      <span class="soft-chip">Database Design</span>
+      <span class="soft-chip">System Analysis</span>
+      <span class="soft-chip">UI/UX Principles</span>
+      <span class="soft-chip">Debugging</span>
+      <span class="soft-chip">App Development</span>
+      <span class="soft-chip">REST APIs</span>
+      <span class="soft-chip">Unit Testing</span>
+    </div>
+  </section>
+
+  <section class="skills-section">
+    <h2>Professional Skills</h2>
+    <div class="soft-grid">
+      <span class="soft-chip">Team Collaboration</span>
+      <span class="soft-chip">Communication</span>
+      <span class="soft-chip">Project Planning</span>
+      <span class="soft-chip">Time Management</span>
+      <span class="soft-chip">Agile / Scrum</span>
+      <span class="soft-chip">Technical Documentation</span>
+      <span class="soft-chip">Problem Solving</span>
+      <span class="soft-chip">Git &amp; Version Control</span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Kelebogile Radebe</span>
+    <span class="footer-sep">·</span>
+    <span>Software Developer</span>
+    <span class="footer-sep">·</span>
+    <a href="mailto:kgatediradebe@gmail.com">kgatediradebe@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  const skills = [
+    { name: "HTML5 / CSS3", pct: 50,tools: "Flexbox, Grid, Responsive Design" },
+    { name: "C#", pct: 50,tools: ".NET, Console & Web apps" },
+    { name: "JavaScript", pct: 50, tools: "Vanilla JS, DOM manipulation" },
+    { name: "React Native / Expo", pct: 50,tools: "Learning in progress" },
+    { name: "Node.js / Express.js", pct: 40,tools: "Learning in progress" },
+    { name: "Java / OOP", pct: 50,tools: "Object-oriented design, JUnit" },
+    { name: "SQL / MySQL", pct: 50,tools: "Schema design, queries, phpMyAdmin" },
+    { name: "GraphQL", pct: 40,tools: "Learning in progress" },
+    { name: "Kotlin", pct: 40,tools: "Learning in progress" },
+    { name: "Git & GitHub", pct: 50, tools: "Branching, merging" },
+     { name: "WordPress and PHPmyAdmin", pct: 40, tools: "Learning in progress" },
+  ];
+
+  const grid = document.getElementById('skillsGrid');
+  skills.forEach(s => {
+    grid.innerHTML += `
+      <div class="skill-card">
+        <div class="skill-top">
+          <span class="skill-name"> ${s.name}</span>
+          <span class="skill-pct">${s.pct}%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill" data-pct="${s.pct}"></div>
+        </div>
+        <div class="skill-tools">${s.tools}</div>
+      </div>
+    `;
+  });
+
+  // Animate bars when visible
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bar = entry.target;
+        bar.style.width = bar.dataset.pct + '%';
+        observer.unobserve(bar);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.skill-fill').forEach(b => observer.observe(b));
+</script>
+</body>
+</html>
