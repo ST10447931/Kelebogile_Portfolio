@@ -956,3 +956,25 @@ footer {
   .nav-links a { padding: 0.4rem 0.5rem; font-size: 0.85rem; }
   .services-grid { grid-template-columns: 1fr; }
 }
+/* ---- PROJECT CARD SCREENSHOTS ---- */
+.project-img-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--surface-2);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  flex-shrink: 0;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.04);
+}
